@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>✨Class Report Generator✨</title>
+    <style>
+         body {
+        height: 90vh;
+        width: 90vw;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+      }
+      #app {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 80%;
+        /* border: 5px solid black; */
+        border-radius: 25px;
+      }
+      .container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: rgb(90, 87, 87);
+        border: 2px solid orangered;
+        border-radius: 25px;
+        width: 50%;
+        height: 50%;
+        color: white;
+      }
+      h1 {
+        text-align: center;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="app">
+      <h1>✨Class Report Generator✨</h1>
+      <div class="container">
+        <div id="result">
+         
+        </div>
+
+    </div>
+
+    <script>
+      //1. Array of Student Object
+      students = [
+        {
+          name: "Sara",
+          rollNo: 101,
+          marks: { math: 85, english: 78, science: 92 },
+        },
+        {
+          name: "Ali",
+          rollNo: 102,
+          marks: { math: 90, english: 88, science: 75 },
+        },
+        {
+          name: "Zainab",
+          rollNo: 103,
+          marks: { math: 70, english: 60, science: 65 },
+        },
+        {
+          name: "Hamza",
+          rollNo: 104,
+          marks: { math: 95, english: 92, science: 98 },
+        },
+      ];
+
+      //       2. Write a function to:
+      //    - Loop through the array.
+      //    - Calculate total and average marks for each student.
+      //    - Add 'total', 'average', and 'grade' properties to each object.
+      //      - Grade logic:
+      //        - A (90+)
+      //        - B (75–89)
+      //        - C (60–74)
+      //        - F (below 60)
+      // ----------------------------------
+      //loop through the array
+      //traditional loop
+      for (let i = 0; i < students.length; i++) {
+        console.log(students[i]);
+      }
+      //for of loop
+      for (const element of students) {
+        // console.log(element);
+      }
+      //for in loop
+      for (const key in students) {
+        // console.log(students[key]);
+      }
+      // ----------------------------------
+      //total marks and average of each student
+      //   - Add 'total', 'average', and 'grade' properties to each object.
+      for (const element of students) {
+        console.log(element.marks);
+        let { math, english, science } = element.marks;
+        let totalMarks = math + english + science;
+        // console.log(`Student ${element.name} total marks =${totalMarks}`);
+
+        let averageMakrs = totalMarks / 3;
+        // console.log(`Student ${element.name} Average Marks =${averageMakrs}`);
+
+        element.total = totalMarks;
+        console.log(element);
+        element.average = averageMakrs;
+        console.log(element);
+        let grade;
+        if (averageMakrs > 90) {
+          grade = "A";
+          console.log(`${element.name} has grade ${grade}`);
+        } else if (averageMakrs >= 75 && averageMakrs <= 89) {
+          grade = "B";
+          console.log(`${element.name} has grade ${grade}`);
+        } else if (averageMakrs >= 60 && averageMakrs <= 74) {
+          grade = "C";
+          console.log(`${element.name} has grade ${grade}`);
+        } else {
+          grade = "F";
+          console.log(`${element.name} has grade ${grade}`);
+        }
+        element.grade = grade;
+      }
+
+      console.log(students);
+      // ----------------------------------
+      //       3. Create another function to:
+      //    - Find and return the top scorer (based on total marks).
+      let max = students[0].total;
+      let topperStudent;
+      function topScorer(anyObject) {
+        for (const i of anyObject) {
+          if (max < i.total) {
+            max = i.total;
+            topperStudent=i.name;
+          }
+        }
+        // for (const j of anyObject) {
+        //   if (j.total == max) {
+        //     topperStudent = j.name;
+        //     console.log(`Topper student is = ${topperStudent}`);
+        //   }
+        // }
+        return max;
+      }
+
+      let topper = topScorer(students);
+      console.log(`Topper student = ${topperStudent}\nIts total Marks = ${topper}`);
+//add values in html page
+
+      document.getElementById(
+        "result"
+      ).innerHTML = `<h3>Topper Student is :${topperStudent}</h3>
+      <p> Marks: ${topper}`;
+    </script>
+  </body>
+</html>

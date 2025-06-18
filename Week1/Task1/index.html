@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Personal Info Dashboard</title>
+  </head>
+  <body>
+    <h1>Welcome to My Info Dashboard</h1>
+    <div id="output"></div>
+    <p id="demo">Done</p>
+    <button type="button" onclick="markAsDone()">Mark as Done</button>
+    <button type="button" onclick="document.write(5 + 6)">Try it</button>
+    <button onclick="window.print()">Print this page</button>
+
+    <script>
+      // Start writing your JavaScript here
+
+      function markAsDone() {
+        document.getElementById("demo").innerHTML =
+          "Your Dashboard is Complete!💕";
+      }
+      document.write("Hello, World! This is my first JavaScript program.");
+
+      //   Task--->Create a simple web-based dashboard that displays a  user’s personal information using JavaScript.
+
+      // Continue the rest of your task below
+      //----------------------------------------------------------
+      // JS Statements & Syntax
+      // Use correct JavaScript syntax, indentation, and semicolons(which is called terminator properly applied)
+
+      //----------------------------------------------------------
+      //  JS Comment-->Comment is just like notes that help us to understand. it is not execute. We write for ourself and other developer. We can write it any language. JS intepreter not understand it.
+      // There are two types of comments:
+      // 1.Single Line Comment-->for a single line and start with //
+      // 2. Multiple Line Comment-->for write multiple lines and start and end with /*    */
+      /*
+      This
+      is
+      multiple
+      line
+      comment.
+      */
+
+      //----------------------------------------------------------
+
+      // JS Variables -->it is just name of memory location. It is container where we store our values in the memory
+      // in JS, there are three types of variables
+      // 1. Var--->redeclare, redefine, global and functional scope
+      // 2.let-->not reclare, redefine,block scope
+      // 3.const-->not reclare, not redefine, block scope
+
+      //   creation of variables and store the values in them
+      var name = "Ayesha";
+      let age = 24;
+      let email = "ayesha731@gmail.com";
+      let City = "Lahore";
+      let isStudent = true;
+      //   print of the all values in tabular form
+      console.table([name, age, email, City, isStudent]);
+
+      //   we can also take these value from the user through prompt
+      var name = prompt("Enter your name:"); //var can be declare
+      //let cannot be declare again that why we make new vriables
+      let age1 = parseInt(prompt("Enter your age:")); //Number type
+      let email1 = prompt("Enter yoour email:"); //string type
+      let isStudent1 = false; //Boolean type
+      //   print all values through alert
+      alert(
+        `Your name : ${name} \n Your age : ${age1} \n Your email : ${email1} \n Student : ${isStudent1}`
+      );
+      console.log(
+        `Your name : ${name} \n Your age : ${age1} \n Your email : ${email1} \n Student : ${isStudent1}`
+      );
+
+      //----------------------------------------------------------
+      //  JS Let & Const
+      // Write the program to find the area of circle using let and const
+      let radius = parseFloat(prompt("Enter the radius")); //radius can be change
+      const valueOfPI = 3.14; //value of PI is not changeable
+      let area = valueOfPI * radius * radius; //area can be change
+      alert(`Area of Circle = ${area}`);
+
+      //some other example of const and let are:
+      let nameOfStudent = "Umeed";
+      let schoolName = "Govt Girls High School";
+      let city = "Lahore";
+      const yearOfBirth = 2000;
+      const idCardNumber = 35202453555;
+
+      console.table([
+        nameOfStudent,
+        schoolName,
+        city,
+        yearOfBirth,
+        idCardNumber,
+      ]);
+
+      //----------------------------------------------------------
+      //  JS Operators
+      // Arithmetic Operators-->+,-,*,/,%,**
+      // Logicak Operators-->AND,OR,NOT
+
+      // 1.Calculate the age in month
+      let studentAge = parseInt(prompt("Enter your age:"));
+      let ageInMonth = studentAge * 12;
+      console.log(`Your Age in Month=${ageInMonth}`);
+      alert(`Your Age in Month=${ageInMonth}`);
+
+      // 2.Check if user is an adult or not
+      if (studentAge > 18) {
+        console.log(`User is Adult.`);
+      } else if (studentAge < 18 && studentAge >= 12) {
+        console.log(`User is teenager`);
+      } else if (studentAge < 12) {
+        console.log(`User is kid`);
+      } else {
+        console.log(`User is not Adult`);
+      }
+      //----------------------------------------------------------
+      //   JS Arithmetic-->+,-,*,/,%,**
+      // Make a simple calculator by hard coded value
+      let number1 = 24;
+      let number2 = 6;
+      let sum = number1 + number2;
+      let subtract = number1 - number2;
+      let multiplication = number1 * number2;
+      let division = number1 / number2;
+      let reminder = number1 % number2;
+      let powerOfNumber = number1 ** 2;
+      //  Show the result of calculator
+      console.table([
+        number1,
+        number2,
+        sum,
+        subtract,
+        multiplication,
+        division,
+        reminder,
+        powerOfNumber,
+      ]);
+
+      //----------------------------------------------------------
+      //   JS Assignment--> +=, *=, etc
+      let number = parseFloat(prompt("Enter the number:")); // take the  number from user and store in the number variable
+      number += 5; //add 5 in the number 5
+      console.log(`After adding 5: ${number}`);
+      number *= 2; //multiply by 2;
+      console.log(`After multiplication 2: ${number}`);
+      number /= 2; //division by 2;
+      console.log(`After division 2: ${number}`);
+      number -= 5; //subtract  by 5;
+      console.log(`After subtraction 2: ${number}`);
+
+      //----------------------------------------------------------
+      //  JS Data Types --->Which tupe of the data store in the variable
+      // There are two types of dataypes in the Javascript
+      // 1.Primitive-->Number,String,Boolean, Undefined,Null, BigInt,Symbol
+      let userName = "Ayesha"; //string
+      let userAge = 24; //number
+      let isFemale = true; //boolean
+      let office; //undefined-->declare but not assign any value
+      //   let userEmail = NULL; //object-->it is bug in JS
+      // 2.Non Primitive-->object,array etc
+      let subjects = ["math", "computer", "science"]; //array
+      let mobileInfo = {
+        name: "RedMi 10",
+        price: 35000,
+        color: "black",
+        rating: "⭐⭐⭐⭐⭐",
+        comment: ["good", "verygood", "best product"],
+      }; //object type
+
+      //show output
+      console.table([
+        userName,
+        userAge,
+        isFemale,
+        office,
+        subjects,
+        mobileInfo,
+      ]);
+      //----------------------------------------------------------
+      // 1. JS Output examples
+      alert("Welcome to the Dashboard!");
+      console.log("Dashboard loaded successfully");
+      document.getElementById("output").innerHTML = `<p>Loading your info...</p>
+          <h3>My Task1-->Profile Dashboard</h3>
+          <p><b>Name:</b> ${name}</p>
+          <p><b>Age:</b> ${age}</p>
+          <p><b>Email:</b> ${email}</p>
+          <p><b>City:</b> ${City}</p>
+          <p><b>isStudent:</b> ${isStudent}</p>
+          <p><b>School Name:</b> ${schoolName}</p>
+          <p><b>Birth Year:</b> ${yearOfBirth}</p>
+          <p><b>CNIC:</b> ${idCardNumber}</p>
+          <p><b>Age in Month:</b> ${ageInMonth}</p>
+          <p><b>Subjects:</b> ${subjects}</p>
+          <p><b>Mobile Information:</b>${JSON.stringify(mobileInfo)}</p>
+
+          `;
+    </script>
+  </body>
+</html>

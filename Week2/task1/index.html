@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Library</title>
+  </head>
+  <body>
+    <h1>Simple Library</h1>
+
+    <script>
+      // Create a constructor function called `Shape`:
+      //    - It takes a name and has a method `describe()` that logs the name.
+      function Shape(name) {
+        this.name = name;
+      }
+      //add method
+      Shape.prototype.describe = function () {
+        console.log(`Name: ${this.name}`);
+      };
+
+      // Create a constructor `Rectangle` that inherits from `Shape`:
+      //    - It accepts `width` and `height`.
+      //    - Add a method `area()` to calculate the area.
+      function Rectangle(name, width, height) {
+        Shape.call(this, name); //call the parent function
+        this.width = width;
+        this.height = height;
+      }
+
+      Rectangle.prototype = Object.create(Shape.prototype);
+      Rectangle.prototype.constructor = Rectangle;
+
+      //   Creating one `Rectangle` and calling `describe()` and `area()`.
+      //add method
+      Rectangle.prototype.area = function () {
+        console.log(`Area : ${this.width * this.height}`);
+      };
+      let r1 = new Rectangle("Rectangle1", 45, 65);
+      r1.describe();
+      r1.area();
+
+      //       Create a `Stack` data structure:
+      //    - With methods: `push`, `pop`, `peek`, `isEmpty`
+      //    - Use an array internally.
+
+      //add elements
+      const stack = [];
+      //   stack.push(12);
+      //   stack.push(67);
+      //   stack.push(4);
+      //   stack.push(72);
+      //   stack.push(1);
+
+      for (let i = 0; i <= 5; i++) {
+        let number = parseInt(prompt("Enter the numbers"));
+        stack.push(number);
+      }
+
+      console.log(stack);
+      // remove the element and return this removing element
+      let popElement = stack.pop();
+      console.log(popElement);
+      console.log(stack);
+      //get the top element in the stack
+      let topElement = stack[stack.length - 1];
+      console.log(topElement);
+      console.log(stack);
+      //check wether the stack is empty or not
+      console.log(stack.length === 0);
+
+      //       3. Create a `Stack` data structure:
+      //    - With methods: `push`, `pop`, `peek`, `isEmpty`
+      //    - Use an array internally.
+      function bubbleSort(arr) {
+        //control iteration
+        for (let i = 0; i < arr.length; i++) {
+          //control the content
+          for (let j = 0; j < arr.length; j++) {
+            if (arr[j] > arr[j + 1]) {
+              //swap the element
+              let temp = arr[j];
+              arr[j] = arr[j + 1];
+              arr[j + 1] = temp;
+            }
+          }
+        }
+        return arr;
+      }
+
+      let sortedArray = bubbleSort(stack);
+      console.log(`Sorted Array :  ${sortedArray}`);
+      console.log(sortedArray);
+    </script>
+  </body>
+</html>
