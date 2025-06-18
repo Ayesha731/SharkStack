@@ -1,0 +1,929 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Portfolio Clone</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Playwrite+AU+SA:wght@100..400&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      .container {
+        height: 100vh;
+        background-color: #ffffff;
+        width: auto;
+        display: flex;
+        row-gap: 30px;
+        font-family: "Montserrat", sans-serif;
+      }
+      .h2-class {
+        font-weight: 400;
+        font-size: 2rem;
+        color: #757575;
+        padding: 20px 0;
+        border-bottom: 1px solid #f4f4f4;
+      }
+      .h3-class {
+        font-weight: 400;
+        font-size: 1.5rem;
+        color: #757575;
+        padding: 20px 0;
+      }
+      .p1 {
+        font-size: 1.5rem;
+        margin-bottom: 7px;
+      }
+      .p2 {
+        font-size: 0.93rem;
+        color: #757575;
+        padding: 3px 0 0 0;
+      }
+      .p3 {
+        font-size: 1.2rem;
+      }
+      .left-side {
+        width: 40%;
+        height: 100vh;
+        background-image: url("profile_girl.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: fixed;
+        left: 0;
+        object-fit: cover;
+      }
+      .right-side {
+        margin-left: 40%;
+        width: 60%;
+        height: 100vh;
+        overflow-y: scroll;
+        padding: 0 20px;
+        background-color: white;
+        animation: scale-in-left 0.5s linear both;
+      }
+
+      nav i {
+        position: fixed;
+        right: 0;
+        padding: 30px 20px;
+        color: #616161;
+        background-color: white;
+        cursor: pointer;
+      }
+      .hero-section {
+        height: 75vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .hero-section h1 {
+        font-weight: 550;
+        font-size: 4rem;
+        word-spacing: 2px;
+        padding: 10px 0;
+      }
+      .hero-section p {
+        padding: 18px 0;
+      }
+      .btn {
+        margin: 15px 0;
+        padding: 16px;
+        width: 210px;
+        border: none;
+        gap: 5px;
+        font-family: "Montserrat", sans-serif;
+        cursor: pointer;
+      }
+      .btn i {
+        padding-right: 3px;
+      }
+      .btn span {
+        font-weight: 400;
+        font-size: 0.93rem;
+      }
+      .btn:hover {
+        background-color: #cccccc;
+      }
+
+      .images {
+        height: 100%;
+        margin: 20px 0 90px 0;
+      }
+      .grid-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: repeat(4, auto);
+        gap: 10px;
+        width: 100%;
+      }
+
+      .item {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+      }
+
+      .item1 {
+        grid-column: 1;
+        grid-row: 1;
+        height: 100%;
+      }
+
+      .item2 {
+        grid-column: 2;
+        /* grid-row: 1 / span 2; */
+        height: 100%;
+      }
+
+      .item3 {
+        height: auto;
+        grid-column: 1;
+        grid-row: 2 / span 2;
+      }
+
+      .item4 {
+        height: 100%;
+        grid-column: 2;
+        grid-row: 2;
+        align-self: end;
+      }
+
+      .item6 {
+        height: 100%;
+        grid-column: 2;
+        grid-row: 3;
+        align-self: end;
+      }
+
+      .item7 {
+        grid-column: 1;
+        grid-row: 5;
+      }
+
+      .item8 {
+        grid-column: 2;
+        grid-row: 5;
+      }
+      .img1 {
+        display: none;
+      }
+
+      .about-section p {
+        font-size: 0.93rem;
+        color: #757575;
+        padding: 20px 0;
+        line-height: 1.5rem;
+        font-weight: normal;
+      }
+      .skill-section {
+        display: flex;
+        flex-direction: column;
+      }
+      .subpart {
+        margin: 16px 0;
+      }
+      .progress-bar {
+        background-color: #eee;
+        overflow: hidden;
+        height: 28px;
+        margin-bottom: 15px;
+      }
+      .progress {
+        background-color: #616161;
+        color: white;
+        text-align: center;
+        height: 100%;
+        text-align: center;
+        line-height: 25px;
+        font-size: 14px;
+      }
+      .skill {
+        margin-bottom: 20px 0;
+      }
+      .skill p {
+        margin-bottom: 20px;
+        font-size: 15px;
+        color: #757575;
+        letter-spacing: 5px;
+      }
+      .sub-skill {
+        width: 100%;
+        padding: 32px;
+        background-color: #616161;
+        color: white;
+        display: flex;
+        justify-content: space-between;
+        margin: 35px 0 25px 0;
+      }
+      .sub-skill .sub-part {
+        width: 25%;
+        text-align: center;
+      }
+      .sub-reputation {
+        display: flex;
+        flex-direction: column;
+      }
+      .short-reputation {
+        display: flex;
+        margin: 20px 0;
+        flex-wrap: wrap;
+      }
+      .short-reputation img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+      }
+      .sub-part .p2 {
+        color: white;
+        font-size: 0.93rem;
+      }
+      .r1 {
+        display: flex;
+        flex-direction: column;
+        padding: 0 10px 0 20px;
+      }
+      .r11 {
+        display: flex;
+        margin: 20px 0;
+      }
+      .sub-price {
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        column-gap: 25px;
+        margin-bottom: 70px;
+      }
+      .price-left {
+        width: 50%;
+        box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .price-left:hover {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+
+      .price-right {
+        width: 50%;
+        box-shadow: 0 4px 3px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .price-right:hover {
+        box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      }
+      .h3-1 {
+        background-color: #616161;
+        padding: 35px;
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: normal;
+      }
+      .h3-11 {
+        background-color: black;
+        padding: 35px;
+        text-align: center;
+        color: white;
+        font-size: 1.5rem;
+        font-weight: normal;
+      }
+      .h3-12 {
+        background-color: white;
+        padding: 20px 35px 0 35px;
+        text-align: center;
+        color: #616161;
+        font-size: 2rem;
+        font-weight: normal;
+      }
+      .p4 {
+        padding: 18px;
+        text-align: center;
+        border-bottom: 1px solid #ededed;
+        color: #757575;
+      }
+      .btn1 {
+        background-color: #f1f1f1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .btn11 {
+        margin: 15px 0;
+        padding: 18px;
+        width: 120px;
+        border: none;
+        background-color: white;
+        font-family: "Montserrat", sans-serif;
+        cursor: pointer;
+      }
+      .btn11:hover {
+        background-color: #000000;
+        color: white;
+      }
+      .upper-contact {
+        margin: 30px 0;
+      }
+      .icons {
+        display: flex;
+        column-gap: 25px;
+        /* padding: 8px 10px; */
+        margin: 35px 10px;
+      }
+      .icons i {
+        padding-top: 10px;
+        color: #757575;
+      }
+      .icons p {
+        color: #757575;
+        font-size: 0.93rem;
+      }
+      .input input {
+        width: 100%;
+        height: 55px;
+        border: 1px solid #cccccc;
+        margin: 8px 0;
+        padding: 0 10px;
+      }
+      input::placeholder {
+        font-size: 1rem;
+        font-weight: normal;
+        font-family: "Montserrat", sans-serif;
+      }
+      .lower-contact {
+        margin: 20px 0 70px 0;
+      }
+      .footer1 {
+        margin: 25px 0;
+      }
+      footer {
+        background-color: #f7f7f7;
+        padding: 80px;
+        text-align: center;
+      }
+      footer i {
+        color: #757575;
+      }
+      footer i:hover {
+        color: #cccccc;
+      }
+      footer p {
+        color: #757575;
+      }
+      footer p > a {
+        color: #757575;
+      }
+
+      #sideMenu {
+        display: none;
+      }
+      .xmark {
+        position: sticky;
+        top: 0;
+        right: 20px;
+        color: white;
+        padding: 30px 20px;
+        cursor: pointer;
+        font-size: 50px;
+      }
+      .xmark:hover {
+        padding: 30px 20px;
+        color: #616161;
+        background-color: white;
+      }
+      .side-menu {
+        background-color: black;
+        width: 100%;
+        height: 100vh;
+        position: sticky;
+        top: 0;
+        left: 0;
+        z-index: 100;
+      }
+
+      .heading {
+        padding-top: 150px;
+      }
+      .heading a {
+        text-decoration: none;
+      }
+      .heading h1 {
+        text-align: center;
+        color: #757575;
+        font-size: 2.2rem;
+        font-weight: normal;
+        padding: 10px;
+      }
+      .heading h1:hover {
+        color: white;
+      }
+      @-webkit-keyframes scale-in-left {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          opacity: 1;
+        }
+      }
+
+      @-webkit-keyframes scale-in-left {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          opacity: 1;
+        }
+      }
+      @keyframes scale-in-left {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .left-side {
+          display: none;
+        }
+
+        .right-side {
+          margin-left: 0;
+          width: 100%;
+          overflow-y: auto;
+          animation: scale-in-tr 0.5s linear both;
+        }
+
+        .hero-section {
+          height: 1230px;
+          width: 100%;
+        }
+
+        .profile-image {
+          width: 60%;
+          height: auto;
+          aspect-ratio: 3/4;
+          background-image: url("profile_girl.jpg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 3px;
+          margin: 10px auto;
+        }
+        .grid-container {
+          max-width: 100%;
+          margin: auto;
+        }
+
+        .images {
+          margin: 20px 0 80px 0;
+        }
+        .short-reputation {
+          margin: 18px 0;
+        }
+        .short-reputation img {
+          width: 80px;
+          height: 85px;
+          border-radius: 50%;
+        }
+        .sub-part .p2 {
+          color: white;
+          font-size: 0.93rems;
+        }
+        .side-menu {
+          float: right;
+          left: -100%; /* Hide off-screen to the left */
+          width: 65%;
+          transition: right 0.4s ease-in-out;
+        }
+      }
+      @keyframes scale-in-tr {
+        0% {
+          -webkit-transform: scale(0);
+          transform: scale(0);
+          -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+          opacity: 1;
+        }
+        100% {
+          -webkit-transform: scale(1);
+          transform: scale(1);
+          -webkit-transform-origin: 100% 0%;
+          transform-origin: 100% 0%;
+          opacity: 1;
+        }
+      }
+
+      @media (max-width: 600px) {
+        .profile-image {
+          width: 92%;
+          height: auto;
+          aspect-ratio: 3/4;
+          background-image: url("profile_girl.jpg");
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          border-radius: 3px;
+          margin: 10px auto;
+        }
+        .grid-container {
+          grid-template-columns: 1fr;
+        }
+
+        .item {
+          width: 100%;
+          height: auto;
+          object-fit: contain;
+        }
+
+        /* 🔥 REMOVE these custom positions to allow natural flow */
+        .item1,
+        .item2,
+        .item3,
+        .item4,
+        .item6,
+        .item7,
+        .item8 {
+          grid-column: auto !important;
+          grid-row: auto !important;
+        }
+        .sub-skill {
+          flex-direction: column;
+          justify-content: space-between;
+        }
+        .sub-part {
+          padding: 13px 0;
+        }
+        .sub-price {
+          flex-direction: column;
+          row-gap: 20px;
+        }
+        .price-left,
+        .price-right {
+          width: 100%;
+        }
+      }
+      @media (max-width: 400px) {
+        .hero-section {
+          height: 1000px;
+        }
+        .hero-section h1 {
+          display: flex;
+          flex-wrap: wrap;
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="left-side"></div>
+      <div class="right-side">
+        <div class="side-menu" id="sideMenu">
+          <div class="icon">
+            <i
+              class="fa-solid fa-xmark fa-2xl xmark"
+              onclick="toggleMenu()"
+            ></i>
+          </div>
+          <div class="heading">
+            <a href="#home"><h1>Home</h1></a>
+            <a href="#portfolio"><h1>Portfolio</h1></a>
+            <a href="#about"><h1>About</h1></a>
+            <a href="#contact"> <h1>Contact</h1></a>
+          </div>
+        </div>
+        <nav>
+          <i
+            class="fa-solid fa-bars fa-2xl humberger"
+            onclick="toggleMenu()"
+          ></i>
+        </nav>
+        <div class="hero-section" id="home">
+          <h1>Jane Doe</h1>
+          <p>Photographer and Web Designer.</p>
+          <div class="profile-image" id="portfolio"></div>
+
+          <button class="btn">
+            <i class="fa-solid fa-download"></i> <span> Download Resume</span>
+          </button>
+        </div>
+        <div class="portfolio-section">
+          <h2 class="h2-class">My Portfolio</h2>
+          <div class="images">
+            <div class="grid-container">
+              <img src="wedding.jpg" alt="image not found" class="item item1" />
+              <img
+                src="underwater.jpg"
+                alt="image not found"
+                class="item item2"
+              />
+              <img src="rocks.jpg" alt="image not found" class="item item3" />
+              <img src="chef.jpg" alt="image not found" class="item item4" />
+
+              <img
+                src="sailboat.jpg"
+                alt="image not found"
+                class="item item7"
+              />
+              <img
+                src="wedding_1.jpg"
+                alt="image not found"
+                class="item item6"
+              />
+
+              <img src="p6.jpg" alt="image not found" class="item item8" />
+            </div>
+          </div>
+        </div>
+        <div class="about-section" id="about">
+          <h2 class="h2-class">About</h2>
+          <p>
+            Some text about me. Some text about me. I am lorem ipsum consectetur
+            adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+            dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+            exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+            esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+            cupidatat non proident, sunt in culpa qui officia deserunt mollit
+            anim id est laborum consectetur adipiscing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+            veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
+            ea commodo consequat.
+          </p>
+        </div>
+        <div class="skill-section">
+          <h2 class="h3-class" style="border-bottom: none">My Skills</h2>
+          <div class="subpart">
+            <div class="skill">
+              <p>Photography</p>
+              <div class="progress-bar">
+                <div class="progress" style="width: 95%">95%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <p>Web Design</p>
+              <div class="progress-bar">
+                <div class="progress" style="width: 85%">85%</div>
+              </div>
+            </div>
+            <div class="skill">
+              <p>Photoshop</p>
+              <div class="progress-bar">
+                <div class="progress" style="width: 80%">80%</div>
+              </div>
+            </div>
+
+            <div class="sub-skill">
+              <div class="sub-part">
+                <p class="p1">14+</p>
+                <p class="p2">Partners</p>
+              </div>
+              <div class="sub-part">
+                <p class="p1">55+</p>
+                <p class="p2">Projects Done</p>
+              </div>
+              <div class="sub-part">
+                <p class="p1">89+</p>
+                <p class="p2">Happy Clients</p>
+              </div>
+              <div class="sub-part">
+                <p class="p1">150+</p>
+                <p class="p2">Meetings</p>
+              </div>
+            </div>
+
+            <button class="btn">
+              <i class="fa-solid fa-download"></i>Download Resume
+            </button>
+          </div>
+        </div>
+
+        <div class="reputation-section">
+          <h2 class="h3-class">My Reputation</h2>
+          <div class="sub-reputation">
+            <div class="short-reputation">
+              <img src="avatar_smoke.jpg" alt="avatar not found" />
+              <div class="r1">
+                <div class="r11">
+                  <p class="p3">Chandler Bing.</p>
+                  <p class="p2" style="padding-left: 20px">Web Designer.</p>
+                </div>
+                <p class="p2">
+                  Jane Doe is just awesome. I am so happy to have met her!
+                </p>
+              </div>
+            </div>
+            <div class="short-reputation">
+              <img src="bandmember.jpg" alt="bandmember not found" />
+              <div class="r1">
+                <div class="r11">
+                  <p class="p3">Chris Fox.</p>
+                  <p class="p2" style="padding-left: 20px">
+                    CEO at Mighty Schools.
+                  </p>
+                </div>
+                <p class="p2">Jane Doe saved us from a web disaster.</p>
+              </div>
+            </div>
+            <div class="short-reputation">
+              <img src="avatar_g2.jpg" alt="avatar not found" />
+              <div class="r1">
+                <div class="r11">
+                  <p class="p3">Rebecca Flex.</p>
+                  <p class="p2" style="padding-left: 20px">CEO at Company.</p>
+                </div>
+                <p class="p2">No one is better than Jane Doe.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="price-section">
+          <h2 class="h3-class">My Price</h2>
+          <div class="sub-price">
+            <div class="price-left">
+              <h3 class="h3-1">Basic</h3>
+              <p class="p4">Web Design</p>
+              <p class="p4">Photography</p>
+              <p class="p4">5GB Storage</p>
+              <p class="p4">Mail Support</p>
+              <div class="sub-part1">
+                <p class="h3-12">$ 10</p>
+                <p class="p4">per month</p>
+              </div>
+              <div class="btn1">
+                <button class="btn11">Sign Up</button>
+              </div>
+            </div>
+            <div class="price-right">
+              <h3 class="h3-11">Pro</h3>
+              <p class="p4">Web Design</p>
+              <p class="p4">Photography</p>
+              <p class="p4">5GB Storage</p>
+              <p class="p4">Endless Support</p>
+              <div class="sub-part1">
+                <p
+                  class="h3-12"
+                  style="background-color: white; color: #616161; font"
+                >
+                  $ 25
+                </p>
+                <p class="p4">per month</p>
+              </div>
+              <div class="btn1">
+                <button class="btn11">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="contact-section" id="contact">
+          <h2 class="h2-class">Contact Me</h2>
+          <div class="sub-contact">
+            <div class="upper-contact">
+              <div class="icons">
+                <i class="fa-solid fa-location-dot fa-2xl"></i>
+                <p>Chicago, US</p>
+              </div>
+              <div class="icons">
+                <i class="fa-solid fa-phone fa-2xl"></i>
+                <p>Phone: +00 151515</p>
+              </div>
+              <div class="icons">
+                <i class="fa-solid fa-envelope fa-2xl"></i>
+                <p>Email: mail@mail.com</p>
+              </div>
+              <img
+                src="map.jpg"
+                alt="map image not found"
+                width="100%"
+                height="100%"
+              />
+            </div>
+            <div class="lower-contact">
+              <p class="p2">Lets get in touch. Send me a message:</p>
+              <form action="#">
+                <div class="input">
+                  <input type="text" name="name" id="name" placeholder="Name" />
+                </div>
+                <div class="input">
+                  <input
+                    type="email"
+                    name="email"
+                    id="email"
+                    placeholder="Email"
+                  />
+                </div>
+                <div class="input">
+                  <input
+                    type="text"
+                    name="subject"
+                    id="subject"
+                    placeholder="Subject"
+                  />
+                </div>
+                <div class="input">
+                  <input
+                    type="text"
+                    name="message"
+                    id="message"
+                    placeholder="Message"
+                  />
+                </div>
+                <button class="btn">
+                  <i class="fa-solid fa-paper-plane"></i>SEND MESSAGE
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <div class="footer1">
+            <i class="fa-brands fa-square-facebook fa-xl"></i>
+            <i class="fa-brands fa-instagram fa-xl"></i>
+            <i class="fa-brands fa-snapchat fa-xl"></i>
+            <i class="fa-brands fa-pinterest-p fa-xl"></i>
+            <i class="fa-brands fa-twitter fa-xl"></i>
+            <i class="fa-brands fa-linkedin-in fa-xl"></i>
+          </div>
+          <p>
+            Powered by
+            <a href="#" target="_blank"> w3.css</a>
+          </p>
+        </footer>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const bars = document.querySelectorAll(".progress-bar");
+
+        bars.forEach((bar) => {
+          const progress = bar.querySelector(".progress");
+
+          if (progress) {
+            const percent = parseInt(progress.textContent.trim());
+            progress.style.width = percent + "%";
+            progress.textContent = percent + "%";
+          }
+        });
+      });
+      function toggleMenu() {
+        var menu = document.getElementById("sideMenu");
+        if (menu.style.display === "block") {
+          menu.style.display = "none";
+        } else {
+          menu.style.display = "block";
+        }
+      }
+
+      window.addEventListener("DOMContentLoaded", function () {
+        const links = document.querySelectorAll("#sideMenu a");
+        links.forEach(function (link) {
+          link.addEventListener("click", function () {
+            toggleMenu();
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
