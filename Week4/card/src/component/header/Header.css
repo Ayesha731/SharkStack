@@ -1,0 +1,22 @@
+.header {
+  display: flex;
+  align-items: center;
+  height: 90px;
+  background-color: #21222a;
+  color: white;
+}
+.nav-list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+}
+
+.nav-list li {
+  margin-left: 20px;
+  font-size: 1.1rem;
+}
+.span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: rgb(10, 134, 179);
+}
