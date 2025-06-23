@@ -6,7 +6,7 @@ const Header = () => {
     <>
       <header className="header">
         <img src={logo} alt="React logo" width={"40px"} />
-        <span className="span">ReactFacts</span>
+        <span className="span">CountryCard</span>
         <nav>
           <ul className="nav-list">
             <li>Country</li>
