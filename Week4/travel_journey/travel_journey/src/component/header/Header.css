@@ -1,0 +1,15 @@
+header {
+  background: #f55a5a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  height: 55px;
+}
+
+header > h2 {
+  font-size: 1rem;
+  font-weight: 500;
+  font-family: Inter;
+  margin-left: 20px;
+}
