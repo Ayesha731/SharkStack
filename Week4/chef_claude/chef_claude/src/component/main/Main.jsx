@@ -1,17 +1,31 @@
 import React from "react";
+import { useState } from "react";
 import "./Main.css";
 const Main = () => {
-  const ingredient = ["potato", "onion", "chilli"];
-  const listIngredient = ingredient.map((x, index) => <li key={index}>{x}</li>);
+  const [ingredients, setIngredients] = useState([]);
+
+  const ingredientsListItems = ingredients.map((ingredient) => (
+    <li key={ingredient}>{ingredient}</li>
+  ));
+
   function handleSubmitted(event) {
+    // event.preventDefault();
+    // console.log("The form is submitted!!");
+    // const formData = new FormData(event.currentTarget);
+    // const newIngredient = formData.get("ingredient");
+    // console.log(newIngredient);
+    // ingredient.push(newIngredient);
+    // console.log(ingredient);
+    // setIngredient((prevIngredient) => [
+    //   ...prevIngredient,
+    //   ingredient[prevIngredient.length],
+    // ]);
     event.preventDefault();
-    console.log("The form is submitted!!");
     const formData = new FormData(event.currentTarget);
     const newIngredient = formData.get("ingredient");
-    console.log(newIngredient);
-    ingredient.push(newIngredient);
-    console.log(ingredient);
+    setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   }
+
   return (
     <>
       <main>
@@ -24,7 +38,7 @@ const Main = () => {
           />
           <button>Add ingredient</button>
         </form>
-        <ul>{listIngredient}</ul>
+        <ul>{ingredientsListItems}</ul>
       </main>
     </>
   );

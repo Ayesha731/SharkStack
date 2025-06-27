@@ -29,6 +29,8 @@ main {
   font-size: 0.875rem;
   font-weight: 500;
   cursor: pointer;
+  height: 38px;
+  padding: 8px;
 }
 
 .add-ingredient-form > button::before {
