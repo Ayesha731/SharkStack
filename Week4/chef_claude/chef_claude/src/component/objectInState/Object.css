@@ -1,0 +1,44 @@
+.main2 {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.card {
+  width: 200px;
+  border: 1px solid lightgray;
+  border-radius: 10px;
+  height: 350px;
+  background-color: #191616;
+}
+
+.card .avatar {
+  width: 100%;
+  padding: 10%;
+  padding-bottom: 0;
+  border-radius: 50%;
+}
+
+.card .name {
+  margin-block: 13px;
+  color: white;
+}
+
+.card .info {
+  padding: 0 10px 10px 10px;
+}
+
+.card .contact {
+  font-size: 0.75rem;
+  color: rgb(163, 162, 162);
+  margin-block: 7px;
+}
+.star-icon {
+  color: gray;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.star-icon:hover {
+  color: gold;
+}
