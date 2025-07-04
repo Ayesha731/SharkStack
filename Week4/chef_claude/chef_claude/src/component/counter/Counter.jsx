@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import "./Counter.css";
+import Count from "./Count.jsx";
+// import "./Counter.css";
 const Counter = () => {
   const [count, setCount] = useState(0);
   /** * Note: if you ever need the old value of state * to help you
@@ -20,19 +21,41 @@ const Counter = () => {
     setCount((prevCount) => prevCount - 1);
   }
   return (
-    <div className="container">
-      <h1>Counter App</h1>
-      <div className="sub-container">
-        <h2 className="main1">{count}</h2>
+    <>
+      {/* <div className="container">
+        <h1>Counter App</h1>
+        <div className="sub-container">
+          <Count number={count} />
+          <button className="plus" onClick={handlerAddition}>
+            +
+          </button>
+          <button className="minus" onClick={handlerSubtraction}>
+            -
+          </button>
+        </div>
+      </div> */}
+      <main className="container">
+        <div className="counter">
+          <button
+            className="minus"
+            onClick={handlerSubtraction}
+            aria-label="Decrease count"
+          >
+            -
+          </button>
 
-        <button className="plus" onClick={handlerAddition}>
-          +
-        </button>
-        <button className="minus" onClick={handlerSubtraction}>
-          -
-        </button>
-      </div>
-    </div>
+          <Count number={count} />
+
+          <button
+            className="plus"
+            onClick={handlerAddition}
+            aria-label="Increase count"
+          >
+            +
+          </button>
+        </div>
+      </main>
+    </>
   );
 };
 

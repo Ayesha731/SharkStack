@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./Array.css";
+// import "./Array.css";
 const Array = () => {
   const [myfavThings, setMyFavThings] = useState([]);
   const allFavoriteThings = [

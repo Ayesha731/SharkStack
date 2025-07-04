@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import "./Tertionary.css";
+// import "./Tertionary.css";
 const Tertionary = () => {
   let [isGoingOut, setIsGoingOut] = useState(false);
   function handlerValue() {

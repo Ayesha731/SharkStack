@@ -1,9 +1,19 @@
 import React from "react";
 import { useState } from "react";
 import "./Main.css";
+import ClaudeRecipe from "./ClaudeRecipe";
+import IngredientsList from "./IngredientsList";
+import { getRecipeFromMistral } from "./ai";
 const Main = () => {
   const [ingredients, setIngredients] = useState([]);
+  // const [recipeShown, setRecipeShown] = useState(false);
+  const [recipe, setRecipe] = React.useState("");
 
+  async function getRecipe() {
+    const recipeMarkdown = await getRecipeFromMistral(ingredients);
+    console.log(recipeMarkdown);
+    setRecipe(recipeMarkdown);
+  }
   const ingredientsListItems = ingredients.map((ingredient) => (
     <li key={ingredient}>{ingredient}</li>
   ));
@@ -31,17 +41,25 @@ const Main = () => {
   //   setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
   //   console.log(newIngredient);
   // }
-  function handleSubmitted(event) {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
+  // function handleSubmitted(event) {
+  //   event.preventDefault();
+  //   const formData = new FormData(event.currentTarget);
+  //   const newIngredient = formData.get("ingredient");
+  //   setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
+  //   event.target.reset(); // optional: clears input
+  // }
+  function addIngredient(formData) {
     const newIngredient = formData.get("ingredient");
     setIngredients((prevIngredients) => [...prevIngredients, newIngredient]);
-    event.target.reset(); // optional: clears input
   }
+
+  // function handleRecpieShown() {
+  //   setRecipeShown((prevRecipe) => !prevRecipe);
+  // }
   return (
     <>
       <main>
-        <form onSubmit={handleSubmitted} className="add-ingredient-form">
+        <form action={addIngredient} className="add-ingredient-form">
           <input
             type="text"
             placeholder="e.g. oregano"
@@ -50,7 +68,16 @@ const Main = () => {
           />
           <button type="submit">Add ingredient</button>
         </form>
-        <ul>{ingredientsListItems}</ul>
+        {ingredients.length > 0 ? (
+          <IngredientsList
+            ingredientList={ingredientsListItems}
+            ingredient={ingredients}
+            // RecpieHandle={handleRecpieShown}
+            getRecipe={getRecipe}
+          />
+        ) : null}
+        {/* ****************************************************************** */}
+        {recipe && <ClaudeRecipe recipe={recipe} />}
       </main>
     </>
   );

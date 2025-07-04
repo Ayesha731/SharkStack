@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <header>
       <FaKitchenSet size={50} />
-      <h1>Chef Claude</h1>
+      <h1>Huggingface</h1>
     </header>
   );
 };

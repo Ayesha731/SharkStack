@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import avatar from "../../assets/avatar.jpg";
-import { FaStar, FaRegStar } from "react-icons/fa6";
 import "./Object.css";
-
+import Star from "./Star.jsx";
 const Object = () => {
   const [contact, setContact] = React.useState({
     firstName: "John",
@@ -12,17 +11,16 @@ const Object = () => {
     isFavorite: false,
   });
 
-  const [filledStar, setFilledStar] = useState(contact.isFavorite);
   function toggleFavorite() {
     //1method
-    console.log("Toggle Favorite");
-    setFilledStar(!filledStar);
+    // console.log("Toggle Favorite");
+    // setFilledStar(!filledStar);
 
     //2nd method
-    // setContact((prevContact) => ({
-    //   ...prevContact,
-    //   isFavorite: !prevContact.isFavorite,
-    // }));
+    setContact((prevContact) => ({
+      ...prevContact,
+      isFavorite: !prevContact.isFavorite,
+    }));
   }
   return (
     <main className="main2">
@@ -32,12 +30,8 @@ const Object = () => {
           className="avatar"
           alt={contact.isFavorite ? "filled star icon" : "empty star icon"}
         />
-        <div className="info" onClick={toggleFavorite}>
-          {filledStar ? (
-            <FaRegStar className="star-icon" />
-          ) : (
-            <FaStar color="gold" className="star-icon" />
-          )}
+        <div className="info">
+          <Star favorite={contact.isFavorite} onClickEvent={toggleFavorite} />
           <h2 className="name">
             {contact.firstName}
             {contact.lastName}
