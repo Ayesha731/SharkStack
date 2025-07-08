@@ -1,0 +1,15 @@
+.container2 {
+  display: flex;
+  flex-direction: column;
+}
+
+.myButton {
+  border: none;
+  border-radius: 5px;
+  padding: 1rem;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+}

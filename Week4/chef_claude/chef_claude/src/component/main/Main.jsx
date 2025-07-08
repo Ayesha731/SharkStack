@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./Main.css";
 import ClaudeRecipe from "./ClaudeRecipe";
 import IngredientsList from "./IngredientsList";
@@ -8,6 +8,8 @@ const Main = () => {
   const [ingredients, setIngredients] = useState([]);
   // const [recipeShown, setRecipeShown] = useState(false);
   const [recipe, setRecipe] = React.useState("");
+  const recpieSection = useRef(null);
+  console.log(recpieSection);
 
   async function getRecipe() {
     const recipeMarkdown = await getRecipeFromMistral(ingredients);
@@ -56,6 +58,19 @@ const Main = () => {
   // function handleRecpieShown() {
   //   setRecipeShown((prevRecipe) => !prevRecipe);
   // }
+
+  useEffect(() => {
+    if (recipe !== "" && recpieSection.current !== null) {
+      // recpieSection.current.scrollIntoView();
+      // recpieSection.current?.scrollIntoView({ behavior: "smooth" });
+      const yCoord =
+        recpieSection.current.getBoundingClientRect().top + window.scrollY;
+      window.scroll({
+        top: yCoord,
+        behavior: "smooth",
+      });
+    }
+  }, [recipe]);
   return (
     <>
       <main>
@@ -70,6 +85,7 @@ const Main = () => {
         </form>
         {ingredients.length > 0 ? (
           <IngredientsList
+            ref={recpieSection}
             ingredientList={ingredientsListItems}
             ingredient={ingredients}
             // RecpieHandle={handleRecpieShown}
