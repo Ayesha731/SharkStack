@@ -9,7 +9,7 @@ function App() {
       <Meme />
       {/* <FetchData /> */}
       {/* <WindowTracker /> */}
-      <Ref />
+      {/* <Ref /> */}
     </>
   );
 }
