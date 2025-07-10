@@ -1,35 +1,98 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import Die from "./assets/diecomponent/Die";
+import { useState, useRef, useEffect } from "react";
+import { nanoid } from "nanoid";
+import ReactConfetti from "react-confetti";
 function App() {
-  const [count, setCount] = useState(0)
+  const [numbers, setNumbers] = useState(() => generateAllNewDice());
+  const buttonRef = useRef(null);
+  console.log(buttonRef);
+
+  useEffect(() => {
+    if (gameWon) {
+      buttonRef.current.focus();
+    }
+  }, [gameWon]);
+
+  const gameWon =
+    numbers.every((die) => die.isHeld) &&
+    numbers.every((die) => die.value === numbers[0].value);
+
+  // if (
+  //   numbers.every((die) => die.isHeld) &&
+  //   numbers.every((die) => die.value === numbers[0].value)
+  // ) {
+  //   console.log("Game won!");
+  //   return (gameWon = true);
+  // }
+
+  function generateAllNewDice() {
+    //1st method******************
+    // const newDice = []
+    // for (let i = 0; i < 10; i++) {
+    //     const rand = Math.ceil(Math.random() * 6)
+    //     newDice.push(rand)
+    // }
+    //   return newDice
+    console.log("generatedAllNewDice is called");
+    return new Array(10).fill(0).map(() => ({
+      value: Math.ceil(Math.random() * 6),
+      isHeld: false,
+      id: nanoid(),
+    }));
+  }
+  console.log(generateAllNewDice());
+
+  //map over dice
+  const arrayOfDie = numbers.map((dieObj) => (
+    <Die
+      key={dieObj.id}
+      value={dieObj.value}
+      held={dieObj.isHeld}
+      // id={dieObj.id}
+      hold={() => hold(dieObj.id)}
+    />
+  ));
+  console.log(arrayOfDie);
+
+  function hold(id) {
+    console.log(id);
+    setNumbers((oldDice) =>
+      oldDice.map((dice) =>
+        dice.id === id ? { ...dice, isHeld: !dice.isHeld } : dice
+      )
+    );
+  }
+  function handleDiceNumbers() {
+    if (!gameWon) {
+      setNumbers((oldDice) =>
+        oldDice.map((dice) =>
+          dice.isHeld ? dice : { ...dice, value: Math.ceil(Math.random() * 6) }
+        )
+      );
+    } else {
+      setNumbers(generateAllNewDice);
+    }
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main>
+      {gameWon && <ReactConfetti />}
+      <div aria-live="polite" className="sr-only">
+        {gameWon && (
+          <p>Congratulations!! You won! Press "New Game" to start again</p>
+        )}
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
+      <h1 className="title">Tenzies</h1>
+      <p className="instructions">
+        Roll until all dice are the same. Click each die to freeze it at its
+        current value between rolls.
       </p>
-    </>
-  )
+      <div className="dice-container">{arrayOfDie}</div>
+      <button ref={buttonRef} className="btn" onClick={handleDiceNumbers}>
+        {gameWon ? "New Game" : "Roll Down"}
+      </button>
+    </main>
+  );
 }
 
-export default App
+export default App;
