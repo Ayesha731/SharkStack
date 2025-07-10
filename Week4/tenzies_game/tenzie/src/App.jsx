@@ -7,16 +7,15 @@ function App() {
   const buttonRef = useRef(null);
   console.log(buttonRef);
 
+  const gameWon =
+    numbers.every((die) => die.isHeld) &&
+    numbers.every((die) => die.value === numbers[0].value);
+
   useEffect(() => {
     if (gameWon) {
       buttonRef.current.focus();
     }
   }, [gameWon]);
-
-  const gameWon =
-    numbers.every((die) => die.isHeld) &&
-    numbers.every((die) => die.value === numbers[0].value);
-
   // if (
   //   numbers.every((die) => die.isHeld) &&
   //   numbers.every((die) => die.value === numbers[0].value)
@@ -79,7 +78,11 @@ function App() {
       {gameWon && <ReactConfetti />}
       <div aria-live="polite" className="sr-only">
         {gameWon && (
-          <p>Congratulations!! You won! Press "New Game" to start again</p>
+          <div className="congrats-message">
+            🎉 Congratulations! You won the game! 🥳✨
+            <br />
+            Press <strong>“New Game”</strong> to play again.
+          </div>
         )}
       </div>
       <h1 className="title">Tenzies</h1>
