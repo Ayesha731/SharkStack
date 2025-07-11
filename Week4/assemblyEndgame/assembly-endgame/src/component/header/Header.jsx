@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./Header.css";
-import Status from "../status/Status";
+import Status from "../status/Status.jsx";
 import Languages from "../langauge/Languages.jsx";
 import { clsx } from "clsx";
 import { languages } from "../langauge/languages.js";
