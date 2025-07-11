@@ -1,5 +1,5 @@
 header {
-  background: #f55a5a;
+  background: radial-gradient(circle, rgb(14, 4, 116), rgb(18, 2, 2));
   display: flex;
   justify-content: center;
   align-items: center;
