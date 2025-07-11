@@ -5,7 +5,7 @@ import "./Header.css";
 const Header = () => {
   return (
     <header>
-      <FaKitchenSet size={50} />
+      <FaKitchenSet size={50} style={{ color: "#066a67" }} />
       <h1>Huggingface</h1>
     </header>
   );
